@@ -2,22 +2,17 @@
 #define MAIN_GAME_OBJECT_HPP
 
 #include <DissensionFramework/game_object.hpp>
-#include <vanishing_object.hpp>
-
-using namespace DissensionFramework;
 
 namespace GlibGame {
-    class MainGameObject : public GameObject {
+    class MainGameObject : public DissensionFramework::GameObject {
         protected:
-            VanishingObject* _vanishing_object;
-
+            float offset;
             void _connectedToGame();
-            void _vanishingObjectVanished();
-            void _createNewVanishingObject();
         public:
             MainGameObject();
 
-            State update();
+            void update() override;
+            void draw(const DissensionFramework::Renderer* renderer) const override;
     };
 }
 
